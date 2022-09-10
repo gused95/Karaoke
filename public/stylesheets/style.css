@@ -8,10 +8,11 @@ a {
 
 .container #texto1{
   position: relative;
-  margin-left: 40rem;
-  margin-top: 17rem;  
 }
 .texto1 {
+  margin-top: 15rem;
+  margin-left: 55rem;
+  margin-right: 5rem;
   font-size: 3rem;
   font-family: 'Roboto Condensed', sans-serif;
   color:#Fff;
@@ -92,7 +93,8 @@ body {
   flex-direction: column-reverse;
   text-align: center;
   width: 200px;
-  margin: 2rem;  
+  margin: 1.5rem;  
+  margin-left: 1rem;
   background-color: #6610f2;
   color: white;
   text-decoration: none;
@@ -100,16 +102,19 @@ body {
   border-radius: 10px;
 }
 
-.container-login{
+.contenedor-login{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
   width: 500px;
-  margin-top: 8rem;
-  border: 
-    
+  margin-top: 8rem;    
 }
-.container{
+.contenedor{
   display: flex;
   width: 100%;
-  margin: 0;
+  margin: 3rem;
+  border:0;
 }
 
 /* inicia estilos de registro*/
@@ -130,7 +135,7 @@ body{
   padding: 30px;
   margin: auto;
   margin-top: 100px;
-  border-radius: 4px;
+  border-radius: 20px;
   font-family: 'calibri';
   color: white;
   opacity: 0.8;
@@ -151,7 +156,7 @@ h1{
   padding: 10px;
   border-radius: 8px;
   margin-bottom:16px;
-  border:1px solid #8244ff;
+  border:3px solid #8244ff;
   font-family: 'calibri';
   font-size: 18px;
   color: white;
