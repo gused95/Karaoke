@@ -111,3 +111,58 @@ body {
   width: 100%;
   margin: 0;
 }
+
+/* inicia estilos de registro*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-image: url(/images/fondo.jpg);
+  width: 100%;
+}
+.formulario-registro{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background: #24303c;
+  padding: 30px;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 4px;
+  font-family: 'calibri';
+  color: white;
+  opacity: 0.8;
+  -moz-opacity: 0.8;
+  filter: alpha(opacity=80);
+  -khtml-opacity: 0.8;
+}
+.formulario-registro h3{ 
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+h1{
+  text-align: center;
+}
+.control{
+  width: 100%;
+  background: #24303c;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom:16px;
+  border:1px solid #8244ff;
+  font-family: 'calibri';
+  font-size: 18px;
+  color: white;
+}
+.formulario-registro button {
+  width: 100%;
+  background: #8244ff;
+  border: none;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 20px;
+}
+
