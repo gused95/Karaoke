@@ -10,3 +10,77 @@ a {
 h1 {
   color: 15px;
 }
+
+#background-video{
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+
+html,body{
+  height:100%
+}
+body {
+ background-color: black;
+}
+
+.logo b{
+  font-family: 'Vibur', cursive;
+  font-size: 20vh;
+  color: rgb(238, 246, 255);
+  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #8244ff, 0 0 0.5em #8244ff, 0 0 0.1em #8244ff, 0 10px 3px #000;
+}
+.logo b span{
+  animation: blink linear infinite 2s;
+}
+.logo b span:nth-of-type(2){
+  animation: blink linear infinite 3s;
+}
+@keyframes blink {
+  78% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  79%{
+     color: rgb(97, 97, 99);
+  }
+  80% {
+    
+    text-shadow: none;
+  }
+  81% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  82% {
+    color: #333;
+    text-shadow: none;
+  }
+  83% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  92% {
+    color: #333;
+    text-shadow: none;
+  }
+  92.5% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+}
+
+.purple-btn{
+  background-color: #6610f2;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  border-radius: 10px;
+}
