@@ -1,14 +1,21 @@
-body {
+body  {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00b7ff;
 }
 
-h1 {
-  color: 15px;
+.container #texto1{
+  position: relative;
+  margin-left: 40rem;
+  margin-top: 17rem;  
+}
+.texto1 {
+  font-size: 3rem;
+  font-family: 'Roboto Condensed', sans-serif;
+  color:#Fff;
+  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #8244ff, 0 0 0.5em #8244ff, 0 0 0.1em #8244ff, 0 10px 3px #000;
 }
 
 #background-video{
@@ -23,15 +30,18 @@ h1 {
   z-index: -1;
 }
 
-
-html,body{
+html body{
   height:100%
 }
 body {
  background-color: black;
 }
+.logo{
+  position: relative;  
+}
 
 .logo b{
+  margin-left: 6rem;  
   font-family: 'Vibur', cursive;
   font-size: 20vh;
   color: rgb(238, 246, 255);
@@ -78,9 +88,26 @@ body {
 }
 
 .purple-btn{
+  display: flex;
+  flex-direction: column-reverse;
+  text-align: center;
+  width: 200px;
+  margin: 2rem;  
   background-color: #6610f2;
   color: white;
   text-decoration: none;
   padding: 1rem 3rem;
   border-radius: 10px;
+}
+
+.container-login{
+  width: 500px;
+  margin-top: 8rem;
+  border: 
+    
+}
+.container{
+  display: flex;
+  width: 100%;
+  margin: 0;
 }
