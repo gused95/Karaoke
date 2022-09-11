@@ -1,13 +1,20 @@
-<form action="/auth/login" method="POST">
-   <label> Username
-      <input type="text" name="username">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
-
-   <button type="submit">Submit</button>
-</form>
+<body class="">
+<div class="fondo2">
+   <form action="/auth/login" method="POST">
+      <section class="inicio"> 
+         <h1>Bienvenido</h1>   
+            <label><h3>Datos Requeridos</h3></label>
+               <label> Correo
+                  <input class='control' id='correo' type="email" placeholder="Ingrese su Correo">
+               </label>
+               <label> Contraseña
+                  <input class='control' id='contraseña' type="password" placeholder="Ingrese su contraseña">
+               </label>
+         <button type="submit" value="Registar">Iniciar</button>
+      </section>
+   </form>
+</div>   
+</body>
 
 {{#if errorMessage}}
    {{errorMessage}}
