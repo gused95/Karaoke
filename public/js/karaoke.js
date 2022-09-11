@@ -15,6 +15,7 @@ function onYouTubeIframeAPIReady() {
         videoId: '0ktP6ZacKGg',
         events: {
             'onReady': onPlayerReady,
+            'onStateChange': onStateChange
         }
     });
 }
@@ -22,4 +23,11 @@ function onYouTubeIframeAPIReady() {
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
     event.target.playVideo();
+}
+
+function onStateChange(event){
+    console.log(event);
+    if(event.data === 0){
+        console.log("se acabooo");
+    }
 }
