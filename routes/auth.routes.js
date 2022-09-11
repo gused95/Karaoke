@@ -20,11 +20,11 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, password } = req.body;
+  const { nombre, password, apellido, correo } = req.body;
 
-  if (!username) {
+  if (!nombre || !password || !apellido || !correo) {
     return res.status(400).render("auth/signup", {
-      errorMessage: "Please provide your username.",
+      errorMessage: "Por favor verifique los datos.",
     });
   }
 
@@ -47,12 +47,12 @@ router.post("/signup", isLoggedOut, (req, res) => {
   */
 
   // Search the database for a user with the username submitted in the form
-  User.findOne({ username }).then((found) => {
+  User.findOne({ correo }).then((found) => {
     // If the user is found, send the message username is taken
     if (found) {
       return res
         .status(400)
-        .render("auth/signup", { errorMessage: "Username already taken." });
+        .render("auth/signup", { errorMessage: "Correo Registrado intente con otro." });
     }
 
     // if user is not found, create a new user - start with hashing the password
@@ -62,14 +62,16 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .then((hashedPassword) => {
         // Create a user and save it in the database
         return User.create({
-          username,
+          nombre,
+          apellido,
+          correo,
           password: hashedPassword,
         });
       })
       .then((user) => {
         // Bind the user to the session object
-        req.session.user = user;
-        res.redirect("/");
+        //req.session.user = user;
+        res.redirect("/auth/login");
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
@@ -80,7 +82,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         if (error.code === 11000) {
           return res
             .status(400)
-            .render("auth/signup", { errorMessage: "Username need to be unique. The username you chose is already in use." });
+            .render("auth/signup", { errorMessage: "Usuario ya existe ,pruebe con otro" });
         }
         return res
           .status(500)

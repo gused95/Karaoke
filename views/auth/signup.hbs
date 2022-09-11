@@ -1,26 +1,26 @@
 <body class="imagen-reg">
    <div class="fondo">
       <form action="/auth/signup" method="POST">
-         <section class="formulario-registro"> 
+         <div class="formulario-registro"> 
             <h1>Estas a un paso!</h1>
                <label><h3>Datos Requeridos</h3></label>
                <label> Nombre
-                  <input class='control' id='nombre' type="text" placeholder="Ingrese su Nombre">
+                  <input name="nombre" class='control' type="text" placeholder="Ingrese su Nombre">
                </label>
                <label> Apellido
-                  <input class='control' id='apellido' type="text" placeholder="Ingrese su Apellido">
+                  <input class='control' name='apellido' type="text" placeholder="Ingrese su Apellido">
                </label>
                <label> Correo
-                  <input class='control' id='correo' type="email" placeholder="Ingrese su Correo">
+                  <input class='control' name='correo' type="email" placeholder="Ingrese su Correo">
                </label>
                <label> Contraseña
-                  <input class='control' id='contraseña' type="password" placeholder="Ingrese su contraseña">
+                  <input class='control' name='password' type="password" placeholder="Ingrese su contraseña">
                </label>
-               <button type="submit" value="Registar">Registarse</button>
-         </section>
-      </form>
+               <button type="submit">Registarse</button>
+         </div>
+         {{#if errorMessage}}
+            <p class="error">{{errorMessage}}</p> 
+         {{/if}}
+      </form>      
    </div>   
 </body>
-{{#if errorMessage}}
-   {{errorMessage}}
-{{/if}}
