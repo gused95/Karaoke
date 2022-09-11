@@ -160,16 +160,18 @@ html{
 h1{
   text-align: center;
 }
-.control{
+.form-control{
   width: 100%;
-  background: #24303c;
+  background: #24303c !important;
   padding: 10px;
   border-radius: 8px;
   margin-bottom:16px;
-  border:3px solid #8244ff;
   font-family: 'calibri';
   font-size: 18px;
-  color: white;
+  color: white !important;
+}
+.valid{
+  border:3px solid #8244ff !important;
 }
 .formulario-registro button {
   width: 100%;
@@ -179,6 +181,10 @@ h1{
   color: white;
   margin: 16px 0;
   font-size: 20px;
+}
+
+.formulario-registro button:disabled, .formulario-registro button[disabled]{
+  background: #ad8cea;
 }
 /*INICIA ESTILOS DE INICIO CORREO Y CONTRASEÑA */
 .imagen-inicio{
@@ -240,7 +246,7 @@ h1{
   font-size: 20px;
 }
 
-/*ESTILOS DEL ERROR*/
+/*ESTILOS DEL ERROR FORMULARIO*/
 .error{
   display: flex;  
   box-sizing: border-box;

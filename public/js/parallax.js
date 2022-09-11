@@ -1,4 +1,5 @@
 const body = document.getElementById('parallax');
+console.log(body)
 body.addEventListener('mousemove',e=>{
   const banner = document.getElementById('banner');  
   banner.style.bottom = `${e.clientY * 0.1}px`;

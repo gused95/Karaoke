@@ -5,22 +5,23 @@
             <h1>Estas a un paso!</h1>
                <label><h3>Datos Requeridos</h3></label>
                <label> Nombre
-                  <input name="nombre" class='control' type="text" placeholder="Ingrese su Nombre">
+                  <input name="nombre" class='form-control valid' type="text" placeholder="Ingrese su Nombre" id="nombre">
                </label>
                <label> Apellido
-                  <input class='control' name='apellido' type="text" placeholder="Ingrese su Apellido">
+                  <input class='form-control valid' name='apellido' type="text" placeholder="Ingrese su Apellido" id="apellido">
                </label>
                <label> Correo
-                  <input class='control' name='correo' type="email" placeholder="Ingrese su Correo">
+                  <input class='form-control valid' name='correo' type="email" placeholder="Ingrese su Correo" id="correo">
                </label>
                <label> Contraseña
-                  <input class='control' name='password' type="password" placeholder="Ingrese su contraseña">
+                  <input class='form-control valid' name='password' type="password" placeholder="Ingrese su contraseña" id="password">
                </label>
-               <button type="submit">Registarse</button>
+               <button id="submit" type="submit" disabled>Registarse</button>
          </div>
          {{#if errorMessage}}
             <p class="error">{{errorMessage}}</p> 
          {{/if}}
       </form>      
    </div>   
+     <script src="/js/validaciones.js"></script>
 </body>
