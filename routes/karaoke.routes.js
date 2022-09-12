@@ -56,9 +56,19 @@ router.post("/list", (req,res) =>{
         });
     })
     .then(songCreated => {
-        res.redirect("/karaoke/search");
+        console.log(songCreated)
+        res.render("karaoke/list", songCreated);
     })
     .catch(err => console.log(err))
 })
+
+router.get("/list", (req,res)=>{
+    res.render("karaoke/list")
+})
+
+
+
+
+
 
 module.exports = router;
