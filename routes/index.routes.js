@@ -5,4 +5,7 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
+const app = require("../app");
+
+
 module.exports = router;
