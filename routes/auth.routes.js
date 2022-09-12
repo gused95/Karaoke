@@ -96,12 +96,12 @@ router.get("/login", isLoggedOut, (req, res) => {
 });
 
 router.post("/login", isLoggedOut, (req, res, next) => {
-  const { username, password } = req.body;
+  const { correo, password } = req.body;
 
-  if (!username) {
+  if (!correo) {
     return res
       .status(400)
-      .render("auth/login", { errorMessage: "Please provide your username." });
+      .render("auth/login", { errorMessage: "verifica email." });
   }
 
   // Here we use the same logic as above
@@ -113,7 +113,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
   }
 
   // Search the database for a user with the username submitted in the form
-  User.findOne({ username })
+  User.findOne({ correo})
     .then((user) => {
       // If the user isn't found, send the message that user provided wrong credentials
       if (!user) {
@@ -132,7 +132,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        return res.redirect("/");
+        return res.redirect("/auth/vistaUsasrio");// se le dice donde ir
       });
     })
 
