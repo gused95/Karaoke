@@ -1,12 +1,261 @@
-body {
+body{
+  width: 100vw;
+  height:100vh;
+  background-color: black;
+}
+html{
+  width: 100vw;
+  height:100vh;
+}
+.body-index{
+  width: calc(100%);
+  height: calc(100%);
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+#texto1{
+  display: flex;
+  align-items: flex-end;
+}
+.texto1 {
+  font-size: 2rem;
+  font-family: 'Roboto Condensed', sans-serif;
+  color:#Fff;
+  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #8244ff, 0 0 0.5em #8244ff, 0 0 0.1em #8244ff, 0 10px 3px #000;
+  margin-left: 0;
+}
+#background-video{
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+#parallax{
+  width: 100% !important;
+  height: 100% !important;
+}
+.logo{
+  position: relative;  
 }
 
-a {
-  color: #00b7ff;
+.logo b{
+  margin-left: 6rem;  
+  font-family: 'Vibur', cursive;
+  font-size: 20vh;
+  color: rgb(238, 246, 255);
+  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #8244ff, 0 0 0.5em #8244ff, 0 0 0.1em #8244ff, 0 10px 3px #000;
+}
+.logo b span{
+  animation: blink linear infinite 2s;
+}
+.logo b span:nth-of-type(2){
+  animation: blink linear infinite 3s;
+}
+@keyframes blink {
+  78% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  79%{
+     color: rgb(97, 97, 99);
+  }
+  80% {
+    
+    text-shadow: none;
+  }
+  81% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  82% {
+    color: #333;
+    text-shadow: none;
+  }
+  83% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  92% {
+    color: #333;
+    text-shadow: none;
+  }
+  92.5% {
+    color: inherit;
+    text-shadow: inherit;
+  }
 }
 
-h1 {
-  color: 15px;
+.purple-btn{
+  display: flex;
+  flex-direction: column-reverse;
+  text-align: center;
+  width: 200px;
+  background-color: #6610f2;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  border-radius: 10px;
+}
+.purple-btn:hover{
+  background-color: rgb(102, 16, 242, .8);
+  color: white;
+}
+
+.contenedor-login{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 500px;
+  margin-top: 8rem;
+  margin-left: 5rem;    
+}
+.contenedor-login a{
+  margin: 10px;
+}
+.contenedor{
+  display: flex;
+  width: 100%;  
+}
+
+/* INICIA ESTILOS DE REGISTRO*/
+
+.imagen-reg{
+  position: relative;
+  top: -100;
+  height: calc(100vh + 100px);
+}
+
+.fondo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/images/girl.jpg);
+  background-position: center;
+  background-size: cover;
+  width: calc(100%);
+  height: 100%;
+}
+.formulario-registro{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background: #24303c;
+  padding: 30px;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 20px;
+  font-family: 'calibri';
+  color: white;
+  opacity: 0.8;
+  -moz-opacity: 0.8;
+  filter: alpha(opacity=80);
+  -khtml-opacity: 0.8;
+}
+.formulario-registro h3{ 
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+h1{
+  text-align: center;
+}
+.form-control{
+  width: 100%;
+  background: #24303c !important;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom:16px;
+  font-family: 'calibri';
+  font-size: 18px;
+  color: white !important;
+}
+.valid{
+  border:3px solid #8244ff !important;
+}
+.formulario-registro button {
+  width: 100%;
+  background: #8244ff;
+  border-radius: 10px;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 20px;
+}
+
+.formulario-registro button:disabled, .formulario-registro button[disabled]{
+  background: #ad8cea;
+}
+/*INICIA ESTILOS DE INICIO CORREO Y CONTRASEÑA */
+.imagen-inicio{
+  position: relative;
+  top: -100;
+  height: calc(100vh + 100px);
+}
+.fondo2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/images/girl.jpg);
+  background-position: center;
+  background-size: cover;
+  width: calc(100%);
+  height: 100%;  
+}
+.inicio{
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background: #24303c;
+  padding: 30px;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 20px;
+  font-family: 'calibri';
+  color: white;
+  opacity: 0.8;
+  -moz-opacity: 0.8;
+  filter: alpha(opacity=80);
+  -khtml-opacity: 0.8;
+}
+.inicio h3{ 
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+h1{
+  text-align: center;
+}
+.control{
+  width: 100%;
+  background: #24303c;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom:16px;
+  border:3px solid #8244ff;
+  font-family: 'calibri';
+  font-size: 18px;
+  color: white;
+}
+.inicio button {
+  width: 100%;
+  background: #8244ff;
+  border-radius: 10px;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 20px;
+}
+
+/*ESTILOS DEL ERROR FORMULARIO*/
+.error{
+  display: flex;  
+  box-sizing: border-box;
+  font-size: 28px;
+  color: white;
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%;
 }

@@ -1,14 +1,27 @@
-<form action="/auth/signup" method="POST">
-   <label> Username
-      <input type="text" name="username">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
-
-   <button type="submit">Submit</button>
-</form>
-
-{{#if errorMessage}}
-   {{errorMessage}}
-{{/if}}
+<body class="imagen-reg">
+   <div class="fondo">
+      <form action="/auth/signup" method="POST">
+         <div class="formulario-registro"> 
+            <h1>!Estas a un paso!</h1>
+               <label><h3>Datos Requeridos</h3></label>
+               <label> Nombre
+                  <input name="nombre" class='form-control valid' type="text" placeholder="Ingrese su Nombre" id="nombre">
+               </label>
+               <label> Apellido
+                  <input class='form-control valid' name='apellido' type="text" placeholder="Ingrese su Apellido" id="apellido">
+               </label>
+               <label> Correo
+                  <input class='form-control valid' name='correo' type="email" placeholder="Ingrese su Correo" id="correo">
+               </label>
+               <label> Contraseña
+                  <input class='form-control valid' name='password' type="password" placeholder="Ingrese su contraseña" id="password">
+               </label>
+               <button id="submit" type="submit" disabled>Registarse</button>
+         </div>
+         {{#if errorMessage}}
+            <p class="error">{{errorMessage}}</p> 
+         {{/if}}
+      </form>      
+   </div>   
+     <script src="/js/validaciones.js"></script>
+</body>
