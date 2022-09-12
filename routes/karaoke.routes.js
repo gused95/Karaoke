@@ -5,6 +5,7 @@ const router = express.Router();
 
 
 const {google} = require('googleapis');
+const Song = require("../models/Song.model");
 const youtube = google.youtube({
     version: 'v3',
     auth: process.env.YOUTUBE_API_KEY
@@ -14,11 +15,11 @@ router.get("/", (req,res) =>{
     res.render("karaoke/show");
 })
 
-router.get("/busqueda", (req,res) =>{
-    res.render("karaoke/busqueda");
+router.get("/search", (req,res) =>{
+    res.render("karaoke/search");
 })
 
-router.post("/busqueda", (req, res) => {
+router.post("/search", (req, res) => {
     youtube.search.list({
         part: "snippet", 
         type: "video",
@@ -26,11 +27,38 @@ router.post("/busqueda", (req, res) => {
         q: req.body.busqueda + " karaoke"
     })
     .then(resultado =>{
-        res.render("karaoke/busqueda", {items: resultado.data.items})
+        res.render("karaoke/search", {items: resultado.data.items})
     })
     .catch(err => console.log(err))
     
 })
 
+router.post("/list", (req,res) =>{
+    youtube.videos.list({
+        part: "snippet",
+        id: req.body.videoId,
+    })
+    .then(videoInfo =>{
+        let video = videoInfo.data.items[0];
+        let position;
+        return Song.find().sort({ position: -1 }).limit(1).then((songs) => {
+            if (songs.length === 0){
+               position = 0; 
+            } else {
+                position = songs[0].position + 1;
+            }
+            return Song.create({
+                videoId: video.id,
+                position: position,
+                title: video.snippet.title,
+                img: video.snippet.thumbnails.default.url,
+            });
+        });
+    })
+    .then(songCreated => {
+        res.redirect("/karaoke/search");
+    })
+    .catch(err => console.log(err))
+})
 
 module.exports = router;

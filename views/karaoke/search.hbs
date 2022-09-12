@@ -1,0 +1,17 @@
+<form action="/karaoke/search" method="post">
+    <input name="busqueda" type="text" placeholder="Busca tu canción">
+    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+</form>
+
+<div>
+    {{#each items}}
+        <p>{{snippet.title}}</p>
+        <div>
+            <img src="{{snippet.thumbnails.default.url}}" alt="">
+            <form action="/karaoke/list" method="post">
+                <input type="hidden" value="{{id.videoId}}" name="videoId">
+                <button><i class="fa-solid fa-circle-plus"></i></button>
+            </form>
+        </div>
+    {{/each}}
+</div>
