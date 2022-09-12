@@ -17,12 +17,11 @@ html{
   align-items: flex-end;
 }
 .texto1 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-family: 'Roboto Condensed', sans-serif;
   color:#Fff;
   text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #8244ff, 0 0 0.5em #8244ff, 0 0 0.1em #8244ff, 0 10px 3px #000;
-  margin-left: 750px;
-  margin-top: 250px;
+  margin-left: 0;
 }
 #background-video{
   width: 100vw;
@@ -101,6 +100,10 @@ html{
   padding: 1rem 3rem;
   border-radius: 10px;
 }
+.purple-btn:hover{
+  background-color: rgb(102, 16, 242, .8);
+  color: white;
+}
 
 .contenedor-login{
   display: flex;
@@ -131,7 +134,7 @@ html{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(/images/fondo.jpg);
+  background-image: url(/images/girl.jpg);
   background-position: center;
   background-size: cover;
   width: calc(100%);
@@ -196,7 +199,7 @@ h1{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(/images/inicio.jpg);
+  background-image: url(/images/girl.jpg);
   background-position: center;
   background-size: cover;
   width: calc(100%);
