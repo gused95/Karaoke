@@ -1,23 +1,13 @@
-body{
-  width: 100vw;
-  height:100vh;
-  background-color: black;
-}
-html{
-  width: 100vw;
-  height:100vh;
-}
-.body-index{
-  width: calc(100%);
-  height: calc(100%);
-  padding: 50px;
+.body-index{  
+  padding: 0px;
 }
 #texto1{
-  display: flex;
-  align-items: flex-end;
+  margin: 100px;
+  margin-top: 230px;
+
 }
 .texto1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-family: 'Roboto Condensed', sans-serif;
   color:#Fff;
   text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #8244ff, 0 0 0.5em #8244ff, 0 0 0.1em #8244ff, 0 10px 3px #000;
@@ -27,21 +17,13 @@ html{
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  position: fixed;  
+  top: 0;  
   z-index: -1;
-}
-#parallax{
-  width: 100% !important;
-  height: 100% !important;
 }
 .logo{
   position: relative;  
 }
-
 .logo b{
   margin-left: 6rem;  
   font-family: 'Vibur', cursive;
@@ -88,23 +70,6 @@ html{
     text-shadow: inherit;
   }
 }
-
-.purple-btn{
-  display: flex;
-  flex-direction: column-reverse;
-  text-align: center;
-  width: 200px;
-  background-color: #6610f2;
-  color: white;
-  text-decoration: none;
-  padding: 1rem 3rem;
-  border-radius: 10px;
-}
-.purple-btn:hover{
-  background-color: rgb(102, 16, 242, .8);
-  color: white;
-}
-
 .contenedor-login{
   display: flex;
   align-items: flex-start;
@@ -114,30 +79,19 @@ html{
   margin-top: 8rem;
   margin-left: 5rem;    
 }
-.contenedor-login a{
-  margin: 10px;
-}
-.contenedor{
-  display: flex;
-  width: 100%;  
-}
 
 /* INICIA ESTILOS DE REGISTRO*/
 
 .imagen-reg{
-  position: relative;
-  top: -100;
-  height: calc(100vh + 100px);
+  position: relative;  
 }
-
 .fondo{
   display: flex;
   align-items: center;
   justify-content: center;
   background-image: url(/images/girl.jpg);
   background-position: center;
-  background-size: cover;
-  width: calc(100%);
+  background-size: cover;  
   height: 100%;
 }
 .formulario-registro{
@@ -150,7 +104,7 @@ html{
   margin-top: 100px;
   border-radius: 20px;
   font-family: 'calibri';
-  color: white;
+  color: #Fff;
   opacity: 0.8;
   -moz-opacity: 0.8;
   filter: alpha(opacity=80);
@@ -190,11 +144,7 @@ h1{
   background: #ad8cea;
 }
 /*INICIA ESTILOS DE INICIO CORREO Y CONTRASEÑA */
-.imagen-inicio{
-  position: relative;
-  top: -100;
-  height: calc(100vh + 100px);
-}
+
 .fondo2{
   display: flex;
   align-items: center;
@@ -258,4 +208,136 @@ h1{
   margin: 20px auto;
   padding: 20px;
   width: 100%;
+}
+
+/*AQUI EMPIEZAN ESTILOS BARRA DE NAVEGACION*/
+
+nav{
+  position: fixed;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  height: 70px;
+  width: 100%;
+  background: #24303c;
+  opacity: 0.8;
+  -moz-opacity: 0.8;
+  filter: alpha(opacity=80);
+  -khtml-opacity: 0.8;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px 0 100px;
+  flex-wrap: wrap;
+}
+nav .logo{
+  margin-left: 4rem;  
+  font-family: 'Vibur', cursive;  
+  color: rgb(238, 246, 255);
+  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #8244ff, 0 0 0.5em #8244ff, 0 0 0.1em #8244ff, 0 10px 3px #000;
+  font-size: 50px;   
+}
+.logo p span{
+  animation: blink linear infinite 2s;
+}
+.logo p span:nth-of-type(2){
+  animation: blink linear infinite 3s;
+}
+@keyframes blink {
+  78% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  79%{
+     color: rgb(97, 97, 99);
+  }
+  80% {
+    
+    text-shadow: none;
+  }
+  81% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  82% {
+    color: #333;
+    text-shadow: none;
+  }
+  83% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  92% {
+    color: #333;
+    text-shadow: none;
+  }
+  92.5% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+}
+nav ul{
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+nav ul li{
+  margin: 15 10px;
+}
+nav ul li a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;  
+  padding: 8px 15px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+nav ul li a.active,
+nav ul li a:hover{
+  color: #fff;
+  background: #8244ff;
+}
+nav .menu-boton i{
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+input[type="checkbox"]{
+  display: none;
+}
+@media (max-width: 1000px){
+  nav{
+    padding: 0 40px 0 50px;
+  }
+}
+@media (max-width: 920px) {
+  nav .menu-btn i{
+    display: block;
+  }
+  #click:checked ~ .menu-btn i:before{
+    content: "\f00d";
+  }
+  nav ul{
+    position: fixed;      
+    display: block;
+    transition: all 0.3s ease;
+  }
+  #click:checked ~ ul{
+    left: 0;
+  }  
+  nav ul li a{
+    width: 100%;
+    margin-left: -100%;
+    display: block;
+    font-size: 20px;
+    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  #click:checked ~ ul li a{
+    margin-left: 0px;
+  }
+  nav ul li a.active,
+  nav ul li a:hover{
+    background: none;    
+  }
 }
