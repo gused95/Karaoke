@@ -5,15 +5,13 @@ const eventSchema = new Schema(
   {
     eventName: {
       type: String,
-      default: "Mi Fiesta",
-      required: [true, 'El nombre del evento es requerido.'],
+      default: "Mi evento",
     },
     hostName: {
         type: String,
     },
     eventDate: {
         type: Date,
-        required: [true, 'La fecha del evento es requerida.'],
     },
     eventTime: {
         type: String,
