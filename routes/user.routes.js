@@ -5,13 +5,13 @@ const router = require("express").Router();
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 //localhost:3000/user-profile
-router.get("/user-profile", isLoggedIn, (req, res) => {
-    res.render("users/user-profile")
+router.get("/user-profile", (req, res) => {    
+    res.render("users/user-profile",{correo:req.session.user.correo, nombre:req.session.user.nombre});
 });
 
 //localhost:3000/user-profile/new-event
-router.get("/new-event", isLoggedIn, (req, res) => {
-    res.render("users/user-new-event")
-})
+router.get("/new-event", (req, res) => {
+    res.render("users/user-new-event");
+});
 
 module.exports = router;
