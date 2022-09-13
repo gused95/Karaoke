@@ -1,15 +1,22 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
 body{
   width: 100vw;
   height:100vh;
-  background-color: black;
+  color: aliceblue;
+  background: hsla(235, 79%, 5%, 1);
+  background: linear-gradient(315deg, hsla(235, 79%, 5%, 1) 0%, hsla(261, 77%, 33%, 1) 100%);
+  background: -moz-linear-gradient(315deg, hsla(235, 79%, 5%, 1) 0%, hsla(261, 77%, 33%, 1) 100%);
+  background: -webkit-linear-gradient(315deg, hsla(235, 79%, 5%, 1) 0%, hsla(261, 77%, 33%, 1) 100%);
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#030519", endColorstr="#401394", GradientType=1 );
 }
-html{
-  width: 100vw;
-  height:100vh;
-}
-.body-index{
-  width: calc(100%);
-  height: calc(100%);
+
+.body-index{  
   padding: 50px;
 }
 #texto1{
@@ -27,21 +34,13 @@ html{
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  position: fixed;  
+  top: 0;  
   z-index: -1;
-}
-#parallax{
-  width: 100% !important;
-  height: 100% !important;
 }
 .logo{
   position: relative;  
 }
-
 .logo b{
   margin-left: 6rem;  
   font-family: 'Vibur', cursive;
@@ -88,17 +87,15 @@ html{
     text-shadow: inherit;
   }
 }
-
 .purple-btn{
-  display: flex;
-  flex-direction: column-reverse;
   text-align: center;
-  width: 200px;
+  width: auto;
   background-color: #6610f2;
   color: white;
   text-decoration: none;
-  padding: 1rem 3rem;
+  padding:0 1rem;
   border-radius: 10px;
+  border: none;
 }
 .purple-btn:hover{
   background-color: rgb(102, 16, 242, .8);
@@ -118,16 +115,13 @@ html{
   margin: 10px;
 }
 .contenedor{
-  display: flex;
-  width: 100%;  
+  display: flex;  
 }
 
 /* INICIA ESTILOS DE REGISTRO*/
 
 .imagen-reg{
-  position: relative;
-  top: -100;
-  height: calc(100vh + 100px);
+  position: relative;  
 }
 
 .fondo{
@@ -192,8 +186,6 @@ h1{
 /*INICIA ESTILOS DE INICIO CORREO Y CONTRASEÑA */
 .imagen-inicio{
   position: relative;
-  top: -100;
-  height: calc(100vh + 100px);
 }
 .fondo2{
   display: flex;
@@ -249,7 +241,7 @@ h1{
   font-size: 20px;
 }
 
-/*ESTILOS DEL ERROR FORMULARIO*/
+/* //ESTILOS DEL ERROR FORMULARIO/ */
 .error{
   display: flex;  
   box-sizing: border-box;
@@ -259,3 +251,12 @@ h1{
   padding: 20px;
   width: 100%;
 }
+
+
+h2{
+  color: #6610f2
+}
+.event-mic{
+  max-width: 20%;
+}
+

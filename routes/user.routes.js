@@ -13,4 +13,9 @@ router.get("/new-event", (req, res) => {
     res.render("users/user-new-event")
 })
 
+router.get("/event-details", (req, res) => {
+    res.render("users/event-details")
+})
+
+
 module.exports = router;
