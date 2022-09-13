@@ -1,3 +1,21 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
+body{
+  width: 100vw;
+  height:100vh;
+  color: aliceblue;
+  background: hsla(235, 79%, 5%, 1);
+  background: linear-gradient(315deg, hsla(235, 79%, 5%, 1) 0%, hsla(261, 77%, 33%, 1) 100%);
+  background: -moz-linear-gradient(315deg, hsla(235, 79%, 5%, 1) 0%, hsla(261, 77%, 33%, 1) 100%);
+  background: -webkit-linear-gradient(315deg, hsla(235, 79%, 5%, 1) 0%, hsla(261, 77%, 33%, 1) 100%);
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#030519", endColorstr="#401394", GradientType=1 );
+}
+
 .body-index{  
   padding: 0px;
 }
@@ -71,15 +89,14 @@
   }
 }
 .purple-btn{
-  display: flex;
-  flex-direction: column-reverse;
   text-align: center;
-  width: 200px;
+  width: auto;
   background-color: #6610f2;
   color: white;
   text-decoration: none;
-  padding: 1rem 3rem;
+  padding:0 1rem;
   border-radius: 10px;
+  border: none;
 }
 .purple-btn:hover{
   background-color: rgb(102, 16, 242, .8);
@@ -224,7 +241,7 @@ h1{
   font-size: 20px;
 }
 
-/* /ESTILOS DEL ERROR FORMULARIO/ */
+/* //ESTILOS DEL ERROR FORMULARIO/ */
 .error{
   display: flex;  
   box-sizing: border-box;
@@ -384,3 +401,11 @@ input[type="checkbox"]{
     background: none;    
   }
 }
+
+h2{
+  color: #6610f2
+}
+.event-mic{
+  max-width: 20%;
+}
+

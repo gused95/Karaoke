@@ -12,7 +12,7 @@ const youtube = google.youtube({
 });
 
 router.get("/", (req,res) =>{
-    res.render("karaoke/show");
+    res.render("karaoke/show", {correo:req.session.user.correo, nombre:req.session.user.nombre});
 })
 
 router.get("/search", (req,res) =>{
@@ -56,14 +56,18 @@ router.post("/list", (req,res) =>{
         });
     })
     .then(songCreated => {
-        console.log(songCreated)
-        res.render("karaoke/list", songCreated);
+        res.redirect("/user/event-details");
     })
     .catch(err => console.log(err))
 })
 
 router.get("/list", (req,res)=>{
-    res.render("karaoke/list")
+    Song.find()
+    .then(songs =>{
+        console.log(songs);
+        res.render("karaoke/list")
+    })
+    .catch(err => console.log(err))
 })
 
 

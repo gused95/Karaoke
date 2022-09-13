@@ -1,17 +1,27 @@
-<form action="/karaoke/search" method="post">
-    <input name="busqueda" type="text" placeholder="Busca tu canción">
-    <button><i class="fa-solid fa-magnifying-glass"></i></button>
-</form>
+<div class="">  
+    <div class="container mt-3">
+        <h2>Busca tu canción</h2>
+        <form  class="input-group mb-3 list-group" action="/karaoke/search" method="post">
+            <div class="d-flex">
+                <input class="border list-group-item" name="busqueda" type="text" placeholder="Busca tu canción">
+                <button class="border p-3"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </form>
+        <img src="" alt="">
 
-<div>
-    {{#each items}}
-        <p>{{snippet.title}}</p>
-        <div>
-            <img src="{{snippet.thumbnails.default.url}}" alt="">
-            <form action="/karaoke/list" method="post">
-                <input type="hidden" value="{{id.videoId}}" name="videoId">
-                <button><i class="fa-solid fa-circle-plus"></i></button>
-            </form>
+        <div class="list-group">
+            {{#each items}}
+                <div class="list-group-item d-flex align-items-center justify-content-between">
+                    <div>
+                        <img src="{{snippet.thumbnails.default.url}}" alt="">
+                        <p>{{snippet.title}}</p>
+                    </div>
+                    <form action="/karaoke/list" method="post">
+                        <input type="hidden" value="{{id.videoId}}" name="videoId">
+                        <button class="rounded-1 border border-1 "><i class="fa-solid fa-plus"></i></i></button>
+                    </form>
+                </div>
+            {{/each}}
         </div>
-    {{/each}}
-</div>
+    </div>
+</div> 
