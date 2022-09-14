@@ -1,19 +1,19 @@
-<div class="">    
+<div class="py-5">   
     <div class="container">
-        <h2 class="mt-3">Nombre del evento</h2>
+        <h2 class="">Nombre del evento</h2>
         <p>Por: nombre del anfitrión</p>
         <div class="d-flex justify-content-between">
             <div>
-                <form class="mt-4">
+                <form class="mt-4" action="/user/send-invitation" method="post">
                     <label>Invitar a:
                         <input class="rounded-1 border border-1" type="mail" placeholder="Correo del invitado">
                     </label>
                     <button class="purple-btn">Enviar</button>
                 </form>
 
-                <form class="mt-4">
+                <form class="mt-4" action="/user/event-details" method="post">
                     <label>Agregar Comentario:
-                        <input class="rounded-1 border border-1" type="text" placeholder="Comentario del evento">
+                        <textarea class="rounded-1 border border-1 d-block"  rows="5" cols="36" placeholder="Comentario del evento" name="comment"></textarea>
                     </label>
                     <button class="purple-btn">Enviar</button>
                 </form>
@@ -26,31 +26,18 @@
         <div class="d-flex">
             <div class="list-group list mt-4 flex-grow-1">
                 <div class="list-group-item">
-                    <div class="d-flex">
+                    <div class="d-flex align-items-center">
                         <h3 class="flex-grow-1">Pide tu canción:</h3>
                         <a href="/karaoke/search" class="purple-btn">Agregar</a>
                     </div>
                 </div>
-                <div class="list-group-item">
-                    Nombre de la canción
-                    <br>
-                    <small>Nombre del invitado</small>
-                </div>
-                <div class="list-group-item">
-                    Nombre de la canción
-                    <br>
-                    <small>Nombre del invitado</small>
-                </div>
-                <div class="list-group-item">
-                    Nombre de la canción
-                    <br>
-                    <small>Nombre del invitado</small>
-                </div>
-                <div class="list-group-item">
-                    Nombre de la canción
-                    <br>
-                    <small>Nombre del invitado</small>
-                </div>
+                {{#each songs}}
+                   <div class="list-group-item">
+                        {{title}}
+                        <br>
+                        <small>{{guestId}}</small>
+                    </div> 
+                {{/each}}
             </div>
             <div class="flex-grow-1">
 
@@ -59,22 +46,14 @@
                 <div class="list-group-item">
                     <h3 class="flex-grow-1">Comentarios:</h3>
                 </div>
-        
-                <div class="list-group-item">
-                    Comentario por: invitado
-                    <br>
-                    <small>Me encanta!!!!!</small>
-                </div>
-                <div class="list-group-item">
-                    Comentario por: invitado
-                    <br>
-                    <small>Me encanta!!!!!</small>
-                </div>
-                <div class="list-group-item">
-                    Comentario por: invitado
-                    <br>
-                    <small>Me encanta!!!!!</small>
-                </div>
+                {{#each comments}}
+                    <div class="list-group-item">
+                        Comentario por: {{guestId}}
+                        <br>
+                        <small>{{comment}}</small>
+                    </div>
+                {{/each}}
+                
             </div>
         </div>
     </div>

@@ -61,14 +61,7 @@ router.post("/list", (req,res) =>{
     .catch(err => console.log(err))
 })
 
-router.get("/list", (req,res)=>{
-    Song.find()
-    .then(songs =>{
-        console.log(songs);
-        res.render("karaoke/list")
-    })
-    .catch(err => console.log(err))
-})
+
 
 
 
