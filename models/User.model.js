@@ -23,6 +23,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Contraseña es requerida."],
     },
+    
   },
   {
     timestamps: true,

@@ -13,11 +13,11 @@ const youtube = google.youtube({
 });
 
 router.get("/", (req,res) =>{
-    res.render("karaoke/show", {correo:req.session.user.correo, nombre:req.session.user.nombre});
+    res.render("karaoke/show", {user: req.session.user});
 })
 
 router.get("/search", (req,res) =>{
-    res.render("karaoke/search");
+    res.render("karaoke/search", {user: req.session.user});
 })
 
 router.post("/search", (req, res) => {
@@ -28,7 +28,7 @@ router.post("/search", (req, res) => {
         q: req.body.busqueda + " karaoke"
     })
     .then(resultado =>{
-        res.render("karaoke/search", {items: resultado.data.items})
+        res.render("karaoke/search", {items: resultado.data.items, user: req.session.user})
     })
     .catch(err => console.log(err))
     

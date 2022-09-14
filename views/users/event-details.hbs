@@ -4,13 +4,14 @@
         <p>Por: {{event.user.nombre}}</p>
         <div class="d-flex justify-content-between">
             <div>
-                <form class="mt-4" action="/user/send-invitation" method="post">
+               {{#with event}}
+                <form class="mt-4" action="/user/send-invitation?eventName={{eventName}}&eventDate={{eventDate}}&eventId={{_id}}&eventCode={{code}}" method="post">
                     <label>Invitar a:
-                        <input class="rounded-1 border border-1" type="mail" placeholder="Correo del invitado">
+                        <input class="rounded-1 border border-1" type="mail" placeholder="Correo del invitado" name="mail">
                     </label>
                     <button class="purple-btn">Enviar</button>
                 </form>
-
+                {{/with}}
                 <form class="mt-4" action="/user/event-details" method="post">
                     <label>Agregar Comentario:
                         <textarea class="rounded-1 border border-1 d-block"  rows="5" cols="36" placeholder="Comentario del evento" name="comment"></textarea>
