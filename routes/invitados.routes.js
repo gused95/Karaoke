@@ -14,13 +14,13 @@ router.post("/", (req, res) => {
     Event.findOne({ code: req.body.code })
         .then((event) => {
             return Guest.create({
-                eventId: event._id,
+                event: event,
                 name: req.body.name
             })
         })
         .then((guest) => {
             req.session.guestId = guest._id
-            res.redirect('/user/event-details')
+            res.redirect(`/user/events/${guest.event._id}`)
         }).
         catch((err) => console.error(err))
 })

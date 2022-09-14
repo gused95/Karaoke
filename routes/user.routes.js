@@ -2,6 +2,7 @@
 const router = require("express").Router();
 const Song = require("../models/Song.model");
 const Comment = require("../models/Comment.model");
+const Guest = require("../models/Guest.model");
 
 // all your routes here
 const isLoggedIn = require("../middleware/isLoggedIn");
@@ -24,9 +25,25 @@ router.get("/new-event", (req, res) => {
     res.render("users/user-new-event");
 });
 
-//localhost:3000/user/event-details
-router.get("/event-details", (req, res) => {
-    res.render("users/event-details");
+//localhost:3000/user/events/:id
+router.get("/events/:id", (req, res) => {
+    Event
+        .findById(req.params.id)
+        .populate('user')
+        .then(event => {
+            Song
+                .find({ event: event._id })
+                .populate('guest')
+                .then((songs) => {
+                    Comment
+                        .find({event: event._id })
+                        .populate('guest')
+                        .then((comments) => {
+                            res.render("users/event-details", { songs, comments, event });
+                        })
+                })
+        })
+        .catch(err => console.log(err))    
 });
 
 //localhost:3000/user/edit-event
@@ -57,14 +74,17 @@ router.post("/delete/:id", (req,res) =>{
 })
 
 router.post("/event-details", (req,res) =>{
-    Comment.create(req.body)
-    .then( comment =>{
-        res.redirect("/user/event-details")  
-    })
-    .catch(err => console.log(err))
+    Guest.findById(req.session.guestId)
+        .then(guest =>{
+            Comment.create({ ...req.body, guest: guest, event: guest.event})
+                .then(comment => {
+                    res.redirect(`/user/events/${comment.event}`)
+                })
+        })
+        .catch(err => console.log(err))
 })
 
-router.post("/send-invitation", (req,res) =>{
+/* router.post("/send-invitation", (req,res) =>{
     
     const data = {
         service_id: "",
@@ -93,19 +113,18 @@ router.post("/send-invitation", (req,res) =>{
         .catch((err) => {
           console.log(err);
         });
-})
+}) */
 
 // localhost:3000/user/new-event
 router.post("/new-event", (req, res) => {
     const caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHJKMNPQRTUVWXYZ2346789";
-       let genCode = "";
-       for (i=0; i<6; i++) genCode +=caracteres.charAt(Math.floor(Math.random()*caracteres.length)); 
-       console.log(genCode)
+    let genCode = "";
+    for (i=0; i<6; i++) genCode +=caracteres.charAt(Math.floor(Math.random()*caracteres.length)); 
 
-    const atributo = {...req.body, code:genCode}
-    console.log(req.body);
+    const atributos = {...req.body, code: genCode, user: req.session.user}
+    
     //Create a new event
-    Event.create(atributo).then(newEvent => {
+    Event.create(atributos).then(newEvent => {
         console.log(newEvent);
         res.redirect("/user/user-profile")
     })

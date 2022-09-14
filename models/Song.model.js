@@ -5,10 +5,10 @@ const songSchema = new Schema(
   {
     videoId: String,
     position: Number,
-    guestId: { type: Schema.Types.ObjectId, ref: 'Guest' },
+    guest: { type: Schema.Types.ObjectId, ref: 'Guest' },
+    event: { type: Schema.Types.ObjectId, ref: 'Event' },
     title: String,
     img: String,
-
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

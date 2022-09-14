@@ -5,6 +5,7 @@ const router = express.Router();
 
 
 const {google} = require('googleapis');
+const Guest = require("../models/Guest.model");
 const Song = require("../models/Song.model");
 const youtube = google.youtube({
     version: 'v3',
@@ -41,22 +42,26 @@ router.post("/list", (req,res) =>{
     .then(videoInfo =>{
         let video = videoInfo.data.items[0];
         let position;
-        return Song.find().sort({ position: -1 }).limit(1).then((songs) => {
-            if (songs.length === 0){
-               position = 0; 
-            } else {
-                position = songs[0].position + 1;
-            }
-            return Song.create({
-                videoId: video.id,
-                position: position,
-                title: video.snippet.title,
-                img: video.snippet.thumbnails.default.url,
+        return Guest.findById(req.session.guestId).then((guest) => {
+            return Song.find().sort({ position: -1 }).limit(1).then((songs) => {
+                if (songs.length === 0){
+                   position = 0; 
+                } else {
+                    position = songs[0].position + 1;
+                }
+                return Song.create({
+                    videoId: video.id,
+                    position: position,
+                    title: video.snippet.title,
+                    img: video.snippet.thumbnails.default.url,
+                    guest,
+                    event: guest.event,
+                });
             });
         });
     })
-    .then(songCreated => {
-        res.redirect("/user/event-details");
+    .then(song => {
+        res.redirect(`/user/events/${song.event}`);
     })
     .catch(err => console.log(err))
 })

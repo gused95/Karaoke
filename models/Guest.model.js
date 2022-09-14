@@ -4,7 +4,7 @@ const { Schema, model } = require("mongoose");
 const guestSchema = new Schema(
   {
     name: String,
-    eventId: { type: Schema.Types.ObjectId, ref: 'Event' },
+    event: { type: Schema.Types.ObjectId, ref: 'Event' },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

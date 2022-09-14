@@ -4,7 +4,8 @@ const { Schema, model } = require("mongoose");
 const commentSchema = new Schema(
   {
     comment: String,
-    guestId: { type: Schema.Types.ObjectId, ref: 'Guest' },
+    guest: { type: Schema.Types.ObjectId, ref: 'Guest' },
+    event: { type: Schema.Types.ObjectId, ref: 'Event' },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
