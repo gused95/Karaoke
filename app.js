@@ -12,6 +12,12 @@ const express = require("express");
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
+const moment = require("moment");
+
+//Helper created for formatting the date
+hbs.registerHelper("formatoFecha", (fecha) => {
+    return moment(fecha).format("DD/MM/YYYY HH:mm A")
+});
 
 const app = express();
 
