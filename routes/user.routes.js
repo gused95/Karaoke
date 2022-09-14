@@ -14,6 +14,7 @@ router.get("/user-profile", (req, res) => {
     Event.find()
     .then(events => {
         res.render("users/user-profile",{correo:req.session.user.correo, nombre:req.session.user.nombre, events:events});
+
     })
     .catch(err => console.log(err))
     

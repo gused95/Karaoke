@@ -3,8 +3,8 @@ const isLoggedOut = require("../middleware/isLoggedOut");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  
-  res.render("index",{correo:req.session.correo});
+  const {correo} = req.session
+  res.render("index",{correo: correo});
 });
 
 
