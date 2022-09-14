@@ -2,6 +2,7 @@
 const router = require("express").Router();
 const Song = require("../models/Song.model");
 const Comment = require("../models/Comment.model");
+let idUser="12133";
 
 // all your routes here
 const isLoggedIn = require("../middleware/isLoggedIn");
@@ -11,7 +12,8 @@ const Event = require("../models/Event.model")
 
 //localhost:3000/user-profile
 router.get("/user-profile", (req, res) => { 
-    Event.find()
+    idUser=req.session.user._id
+    Event.find({"userId":idUser})
     .then(events => {
         res.render("users/user-profile",{correo:req.session.user.correo, nombre:req.session.user.nombre, events:events});
     })
@@ -101,9 +103,8 @@ router.post("/new-event", (req, res) => {
        let genCode = "";
        for (i=0; i<6; i++) genCode +=caracteres.charAt(Math.floor(Math.random()*caracteres.length)); 
        console.log(genCode)
-
-    const atributo = {...req.body, code:genCode}
-    console.log(req.body);
+       
+    const atributo = {...req.body, code:genCode,userId:idUser}    
     //Create a new event
     Event.create(atributo).then(newEvent => {
         console.log(newEvent);

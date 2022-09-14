@@ -263,8 +263,7 @@ h1{
   /*background-image: url(/images/microfono.jpeg);*/
   background-position: center;
   background-size: cover;
-  width: calc(100%);
-  height: 100%;
+  height: 45%;
   padding: 30px; 
 }
 
@@ -417,4 +416,6 @@ h2{
 .event-mic{
   max-width: 20%;
 }
-
+.container-profile-hbs{
+  display: flex;
+}

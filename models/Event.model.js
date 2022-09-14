@@ -15,6 +15,10 @@ const eventSchema = new Schema(
       type: String,
       unique: true,
     },
+    userId: {
+      type:String,
+      required: [true, "Id es requerido."],
+    }
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
