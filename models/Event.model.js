@@ -7,21 +7,14 @@ const eventSchema = new Schema(
       type: String,
       default: "Mi evento",
     },
-    hostName: {
-        type: String,
-    },
+
     eventDate: {
         type: Date,
     },
-    eventTime: {
-        type: String,
+    code: {
+      type: String,
+      unique: true,
     },
-    eventImg: {
-        type: String, 
-    },
-    eventColor: {
-        type: String,
-    }
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

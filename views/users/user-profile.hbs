@@ -1,8 +1,28 @@
-  <div class="fondo-user-profile">
-  <img src="/images/userProfile.png" alt=""/>
-  <br>
-  <p>Nombre de usuario:</p>
-  <br>
-  <a href="/user/new-event"><button>Crear un evento</button></a>
+  <div class="container mt-5">
+    <h2>Perfil de eventos</h2>
+    <a href="/user/new-event" ><button class="purple-btn">Crear un evento</button></a>
+    <div>
+      <div class="cardContainer d-flex flex-wrap">   
+        {{#each events}}
+            <div class="card m-3" style="width: 18rem;">
+                <img src="/images/karaoke.jpg" class="card-img-top cardImg"  alt="...">
+                <div class="card-body">
+                    <h4 class="card-title text-body">Evento:{{this.eventName}}</h4>
+                    <h5 class="card-title text-body">Fecha:{{this.eventDate}}</h5>
+                    <a href="/user/event-details/" class="purple-btn">Detalle del evento</a>
+                    <br>
+                    <div class="d-flex mt-2">
+                        <a href="/user/edit-event/{{_id}}" class="btn btn-dark">Editar</a>
+                        <form action="/user/delete/{{_id}}" method="post">
+                          <button type="submit" class="btn btn-danger ms-2">Borrar</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+          
+        {{/each}}
+      </div>
   </div>
+</div>
   
