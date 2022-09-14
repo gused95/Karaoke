@@ -1,16 +1,17 @@
 <div class="py-5">   
     <div class="container">
-        <h2 class="">Nombre del evento</h2>
-        <p>Por: nombre del anfitrión</p>
+        <h2 class="">{{event.eventName}}</h2>
+        <p>Por: {{event.user.nombre}}</p>
         <div class="d-flex justify-content-between">
             <div>
-                <form class="mt-4" action="/user/send-invitation" method="post">
+               {{#with event}}
+                <form class="mt-4" action="/user/send-invitation?eventName={{eventName}}&eventDate={{eventDate}}&eventId={{_id}}&eventCode={{code}}" method="post">
                     <label>Invitar a:
-                        <input class="rounded-1 border border-1" type="mail" placeholder="Correo del invitado">
+                        <input class="rounded-1 border border-1" type="mail" placeholder="Correo del invitado" name="mail">
                     </label>
                     <button class="purple-btn">Enviar</button>
                 </form>
-
+                {{/with}}
                 <form class="mt-4" action="/user/event-details" method="post">
                     <label>Agregar Comentario:
                         <textarea class="rounded-1 border border-1 d-block"  rows="5" cols="36" placeholder="Comentario del evento" name="comment"></textarea>
@@ -35,7 +36,7 @@
                    <div class="list-group-item">
                         {{title}}
                         <br>
-                        <small>{{guestId}}</small>
+                        <small>{{guest.name}}</small>
                     </div> 
                 {{/each}}
             </div>
@@ -43,12 +44,12 @@
 
             </div>
             <div class="list-group list mt-4 flex-grow-1">
-                <div class="list-group-item">
+                <div class="list-group-item">   
                     <h3 class="flex-grow-1">Comentarios:</h3>
                 </div>
                 {{#each comments}}
                     <div class="list-group-item">
-                        Comentario por: {{guestId}}
+                        Comentario por: {{guest.name}}
                         <br>
                         <small>{{comment}}</small>
                     </div>

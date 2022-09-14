@@ -3,7 +3,9 @@ const router = require("express").Router();
 const Song = require("../models/Song.model");
 const Comment = require("../models/Comment.model");
 let idUser="12133";
+const Guest = require("../models/Guest.model");
 
+const axios = require("axios");
 // all your routes here
 const isLoggedIn = require("../middleware/isLoggedIn");
 
@@ -12,10 +14,12 @@ const Event = require("../models/Event.model")
 
 //localhost:3000/user-profile
 router.get("/user-profile", (req, res) => { 
-    idUser=req.session.user._id
-    Event.find({"userId":idUser})
+    Event.find({ user: req.session.user._id })
     .then(events => {
-        res.render("users/user-profile",{correo:req.session.user.correo, nombre:req.session.user.nombre, events:events});
+        res.render("users/user-profile",{
+            user: req.session.user,
+            events: events
+        });
     })
     .catch(err => console.log(err))
     
@@ -23,19 +27,35 @@ router.get("/user-profile", (req, res) => {
 
 //localhost:3000/user/new-event
 router.get("/new-event", (req, res) => {
-    res.render("users/user-new-event");
+    res.render("users/user-new-event", {user: req.session.user});
 });
 
-//localhost:3000/user/event-details
-router.get("/event-details", (req, res) => {
-    res.render("users/event-details");
+//localhost:3000/user/events/:id
+router.get("/events/:id", (req, res) => {
+    Event
+        .findById(req.params.id)
+        .populate('user')
+        .then(event => {
+            Song
+                .find({ event: event._id })
+                .populate('guest')
+                .then((songs) => {
+                    Comment
+                        .find({event: event._id })
+                        .populate('guest')
+                        .then((comments) => {
+                            res.render("users/event-details", { songs, comments, event, user: req.session.user });
+                        })
+                })
+        })
+        .catch(err => console.log(err))    
 });
 
 //localhost:3000/user/edit-event
 router.get("/edit-event/:id", (req, res) => {
     Event.findById(req.params.id)
         .then((event) => {
-            res.render("users/edit-event", {event})
+            res.render("users/edit-event", {event, user: req.session.user})
         })
         .catch(err => console.log(err))
 });
@@ -59,25 +79,36 @@ router.post("/delete/:id", (req,res) =>{
 })
 
 router.post("/event-details", (req,res) =>{
-    Comment.create(req.body)
-    .then( comment =>{
-        res.redirect("/user/event-details")  
-    })
-    .catch(err => console.log(err))
+    Guest.findById(req.session.guestId)
+        .then(guest =>{
+            Comment.create({ ...req.body, guest: guest, event: guest.event})
+                .then(comment => {
+                    res.redirect(`/user/events/${comment.event}`)
+                })
+        })
+        .catch(err => console.log(err))
 })
 
-router.post("/send-invitation", (req,res) =>{
-    
+ router.post("/send-invitation", (req,res) =>{
+    console.log(req.session)
+    console.log(req.body)
+    console.log(req.query)
+    const {eventName, eventDate, eventId, eventCode} = req.query
+    const {mail} = req.body
+    const{nombre} = req.session.user
     const data = {
-        service_id: "",
-        template_id: "",
-        user_id: "",
+        service_id: process.env.SERVICE_ID,
+        template_id: process.env.TEMPLATE_ID,
+        user_id: process.env.PUBLIC_KEY,
         template_params: {
-          nombre: user.name,
-          correo: user.email,
-          profilePic: user.profilePic,
+          correo: mail,
+          eventName:eventName,
+          eventId: eventId,
+          user: nombre,
+          date: eventDate, 
+          eventCode: eventCode,
         },
-        accessToken: "",
+        accessToken: process.env.PRIVATE_KEY,
       };
       const url = "https://api.emailjs.com/api/v1.0/email/send";
       axios({
@@ -91,22 +122,23 @@ router.post("/send-invitation", (req,res) =>{
         .then((result) => {
           console.log(result);
           console.log("Correo enviado :)");
+          res.redirect(`/user/events/${eventId}`)
         })
         .catch((err) => {
           console.log(err);
-        });
-})
+        })
+}) 
 
 // localhost:3000/user/new-event
 router.post("/new-event", (req, res) => {
     const caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHJKMNPQRTUVWXYZ2346789";
-       let genCode = "";
-       for (i=0; i<6; i++) genCode +=caracteres.charAt(Math.floor(Math.random()*caracteres.length)); 
-       console.log(genCode)
-       
-    const atributo = {...req.body, code:genCode,userId:idUser}    
+    let genCode = "";
+    for (i=0; i<6; i++) genCode +=caracteres.charAt(Math.floor(Math.random()*caracteres.length)); 
+
+    const atributos = {...req.body, code: genCode, user: req.session.user}
+    
     //Create a new event
-    Event.create(atributo).then(newEvent => {
+    Event.create(atributos).then(newEvent => {
         console.log(newEvent);
         res.redirect("/user/user-profile")
     })

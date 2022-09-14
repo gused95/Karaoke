@@ -25,13 +25,13 @@
           <i class="fas fa-bars"></i>
         </label>
         <ul>
-          {{#unless correo}}
+          {{#unless user}}
             <li><a href="/auth/signup">Registrate</a></li>
             <li><a href="/auth/login">Inicia Sesion</a></li>
             <li><a href="/invitados/sesion-invitado">Invitado</a></li>
           {{/unless}}
-          {{#if correo}}
-            <li><a class="active" href="/">Bienvenido {{nombre}} </a></li>
+          {{#if user}}
+            <li><a class="active" href="/">Bienvenido {{user.nombre}} {{user.apellido}} </a></li>
             <li><a href="/auth/logout">Cierra Sesion</a></li>
           {{/if}}           
         </ul>

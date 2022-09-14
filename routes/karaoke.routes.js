@@ -5,6 +5,7 @@ const router = express.Router();
 
 
 const {google} = require('googleapis');
+const Guest = require("../models/Guest.model");
 const Song = require("../models/Song.model");
 const youtube = google.youtube({
     version: 'v3',
@@ -12,11 +13,11 @@ const youtube = google.youtube({
 });
 
 router.get("/", (req,res) =>{
-    res.render("karaoke/show", {correo:req.session.user.correo, nombre:req.session.user.nombre});
+    res.render("karaoke/show", {user: req.session.user});
 })
 
 router.get("/search", (req,res) =>{
-    res.render("karaoke/search");
+    res.render("karaoke/search", {user: req.session.user});
 })
 
 router.post("/search", (req, res) => {
@@ -27,7 +28,7 @@ router.post("/search", (req, res) => {
         q: req.body.busqueda + " karaoke"
     })
     .then(resultado =>{
-        res.render("karaoke/search", {items: resultado.data.items})
+        res.render("karaoke/search", {items: resultado.data.items, user: req.session.user})
     })
     .catch(err => console.log(err))
     
@@ -41,22 +42,26 @@ router.post("/list", (req,res) =>{
     .then(videoInfo =>{
         let video = videoInfo.data.items[0];
         let position;
-        return Song.find().sort({ position: -1 }).limit(1).then((songs) => {
-            if (songs.length === 0){
-               position = 0; 
-            } else {
-                position = songs[0].position + 1;
-            }
-            return Song.create({
-                videoId: video.id,
-                position: position,
-                title: video.snippet.title,
-                img: video.snippet.thumbnails.default.url,
+        return Guest.findById(req.session.guestId).then((guest) => {
+            return Song.find().sort({ position: -1 }).limit(1).then((songs) => {
+                if (songs.length === 0){
+                   position = 0; 
+                } else {
+                    position = songs[0].position + 1;
+                }
+                return Song.create({
+                    videoId: video.id,
+                    position: position,
+                    title: video.snippet.title,
+                    img: video.snippet.thumbnails.default.url,
+                    guest,
+                    event: guest.event,
+                });
             });
         });
     })
-    .then(songCreated => {
-        res.redirect("/user/event-details");
+    .then(song => {
+        res.redirect(`/user/events/${song.event}`);
     })
     .catch(err => console.log(err))
 })

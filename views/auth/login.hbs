@@ -1,22 +1,27 @@
-<body class="">
-   <div class="fondo2">
+<div class="d-flex">
+   <div>
+      <img class="login-img" src="/images/microphone-neon.jpg" alt="">
+   </div>
+   <div class="flex-grow-1">
       <form action="/auth/login" method="POST">
          <div class="inicio"> 
             <h1>Bienvenido</h1>   
-               <label><h3>Datos Requeridos</h3></label>
-                  <label> Correo
-                     <input name="correo" class='control' id='correo' type="email" placeholder="Ingrese su Correo">
-                  </label>
-                  <label> Contraseña
-                     <input name="password" class='control' id='contraseña' type="password" placeholder="Ingrese su contraseña">
-                  </label>
-                  <button type="submit" value="Registar">Iniciar</button>
-                  <p class="cuenta">¿No tienes cuenta? <a class="link" href="http://localhost:3000/auth/signup">Registrate</a></p>
+            <label>
+               <h3>Datos Requeridos</h3>
+            </label>
+            <label> Correo
+               <input name="correo" class='control' id='correo' type="email" placeholder="Ingrese su Correo">
+            </label>
+            <label> Contraseña
+               <input name="password" class='control' id='contraseña' type="password" placeholder="Ingrese su contraseña">
+            </label>
+            <button type="submit" value="Registar">Iniciar</button>
+            <p class="cuenta">¿No tienes cuenta? <a class="link" href="http://localhost:3000/auth/signup">Registrate</a></p>
          </div> 
       </form> 
    </div>
    <script src="/js/validacionLogin.js"></script>  
-</body>
+</div>
 
 {{#if errorMessage}}
    {{errorMessage}}
