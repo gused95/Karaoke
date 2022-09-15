@@ -120,6 +120,7 @@ body{
 
 /* INICIA ESTILOS DE REGISTRO*/
 
+.guest-img,
 .signup-img{
   height: 100vh;
   max-width: 100%;
@@ -404,9 +405,5 @@ h2{
 }
 .container-profile-hbs{
   display: flex;
-}
-
-.guest-img{
-  height: 100vh;
 }
 
