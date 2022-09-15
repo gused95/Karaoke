@@ -2,15 +2,15 @@
     <div class="container">
         <h2 class="">{{event.eventName}}</h2>
         <p>Por: {{event.user.nombre}}</p>
-        <div class="d-flex justify-content-between">
-            <div>
+        <div class="row">
+            <div class="col-sm-6">
                {{#with event}}
-                <form class="mt-4" action="/user/send-invitation?eventName={{eventName}}&eventDate={{eventDate}}&eventId={{_id}}&eventCode={{code}}" method="post">
-                    <label>Invitar a:
-                        <input class="rounded-1 border border-1" type="mail" placeholder="Correo del invitado" name="mail">
-                    </label>
-                    <button class="purple-btn">Enviar</button>
-                </form>
+                    <form class="mt-4" action="/user/send-invitation?eventName={{eventName}}&eventDate={{eventDate}}&eventId={{_id}}&eventCode={{code}}" method="post">
+                        <label>Invitar a:
+                            <input class="rounded-1 border border-1" type="mail" placeholder="Correo del invitado" name="mail">
+                        </label>
+                        <button class="purple-btn">Enviar</button>
+                    </form>
                 {{/with}}
                 <form class="mt-4" action="/user/event-details" method="post">
                     <label>Agregar Comentario:
@@ -18,43 +18,45 @@
                     </label>
                     <button class="purple-btn">Enviar</button>
                 </form>
-        </div>
-        <div class="d-flex align-items-center flex-column">
-            <img  class="rounded mx-auto d-block event-mic"  src="/images/mano-microfono.jpg" alt="">
-            <a href="/karaoke/{{event._id}}" class="btn btn-dark">Vista de Karaoke</a>
-        </div> 
-        </div>
-        <div class="d-flex">
-            <div class="list-group list mt-4 flex-grow-1">
-                <div class="list-group-item">
-                    <div class="d-flex align-items-center">
-                        <h3 class="flex-grow-1">Pide tu canción:</h3>
-                        <a href="/karaoke/search" class="purple-btn">Agregar</a>
-                    </div>
-                </div>
-                {{#each songs}}
-                   <div class="list-group-item">
-                        {{title}}
-                        <br>
-                        <small>{{guest.name}}</small>
-                    </div> 
-                {{/each}}
             </div>
-            <div class="flex-grow-1">
-
-            </div>
-            <div class="list-group list mt-4 flex-grow-1">
-                <div class="list-group-item">   
-                    <h3 class="flex-grow-1">Comentarios:</h3>
+            <div class="col-sm-6 text-center">
+                <div>
+                    <img class="rounded event-mic"  src="/images/mano-microfono.jpg" alt="">
                 </div>
-                {{#each comments}}
+                <a href="/karaoke/{{event._id}}" class="btn btn-dark">Vista de Karaoke</a>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="list-group list mt-4">
                     <div class="list-group-item">
-                        Comentario por: {{guest.name}}
-                        <br>
-                        <small>{{comment}}</small>
+                        <div class="d-flex align-items-center">
+                            <h3 class="flex-grow-1">Pide tu canción:</h3>
+                            <a href="/karaoke/search" class="purple-btn">Agregar</a>
+                        </div>
                     </div>
-                {{/each}}
-                
+                    {{#each songs}}
+                    <div class="list-group-item">
+                            {{title}}
+                            <br>
+                            <small>{{guest.name}}</small>
+                        </div> 
+                    {{/each}}
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="list-group list mt-4">
+                    <div class="list-group-item">   
+                        <h3 class="flex-grow-1">Comentarios:</h3>
+                    </div>
+                    {{#each comments}}
+                        <div class="list-group-item">
+                            Comentario por: {{guest.name}}
+                            <br>
+                            <small>{{comment}}</small>
+                        </div>
+                    {{/each}}
+                </div>
             </div>
         </div>
     </div>
