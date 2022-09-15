@@ -19,6 +19,14 @@ hbs.registerHelper("formatoFecha", (fecha) => {
     return moment(fecha).format("DD/MM/YYYY HH:mm A")
 });
 
+hbs.registerHelper("formatEvt",(nombre)=>{
+return(nombre.split(`"`))
+})
+
+hbs.registerHelper("parseFechita",(fecha)=>{
+    return moment(fecha).format("YYYY/MM/DD").slice(0,10)
+})
+
 const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
