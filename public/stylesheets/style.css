@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body{
   font-family: 'Nunito', sans-serif;
   padding-top: 70px;
@@ -119,8 +120,12 @@ body{
 
 /* INICIA ESTILOS DE REGISTRO*/
 
-.signup-img{
+.login-img,
+.guest-img,
+.signup-img {
   height: 100vh;
+  max-width: 100%;
+  object-fit: cover;
 }
 
 
@@ -128,7 +133,6 @@ body{
   width: 400px;
   background: #24303c;
   padding: 15px 30px;
-  text-align: center;
   border-radius: 20px;
   font-family: 'calibri';
   color: #Fff;
@@ -180,12 +184,7 @@ h1{
 }
 /*INICIA ESTILOS DE INICIO CORREO Y CONTRASEÑA */
 
-.login-img{
-  height: 100vh;
-
-}
-
-.inicio{
+.inicio {
   display: flex;
   flex-direction: column;
   width: 400px;
@@ -402,9 +401,5 @@ h2{
 }
 .container-profile-hbs{
   display: flex;
-}
-
-.guest-img{
-  height: 100vh;
 }
 

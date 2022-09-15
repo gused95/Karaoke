@@ -20,23 +20,21 @@
   <body>
     <nav>
       <div class="logo"><a href="/">K<span>a</span>n<span>t</span>a</a></div>         
-        <input type="checkbox" id="click">
-        <label for="click" class="menu-boton">
-          <i class="fas fa-bars"></i>
-        </label>
-        <ul>
-          {{#unless guest}}
-          {{#unless user}}
-            <li><a href="/auth/signup">Registrate</a></li>
-            <li><a href="/auth/login">Inicia Sesion</a></li>
-            <li><a href="/invitados/sesion-invitado">Invitado</a></li>
-          {{/unless}}
-          {{#if user}}
-            <li><a class="active" href="/">Bienvenido {{user.nombre}} {{user.apellido}} </a></li>
-            <li><a href="/auth/logout">Cierra Sesion</a></li>
-          {{/if}} 
-         {{/unless}}
-        </ul>
+      <input type="checkbox" id="click">
+      <label for="click" class="menu-boton">
+        <i class="fas fa-bars"></i>
+      </label>
+      <ul>
+        {{#unless user}}
+          <li><a href="/auth/signup">Registrate</a></li>
+          <li><a href="/auth/login">Inicia Sesion</a></li>
+          <li><a href="/invitados/sesion-invitado">Invitado</a></li>
+        {{/unless}}
+        {{#if user}}
+          <li><a class="active" href="/">Bienvenido {{user.nombre}} {{user.apellido}} </a></li>
+          <li><a href="/auth/logout">Cierra Sesion</a></li>
+        {{/if}} 
+      </ul>
     </nav>      
 
     {{{body}}}

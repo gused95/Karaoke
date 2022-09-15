@@ -7,32 +7,12 @@ const router = express.Router();
 const {google} = require('googleapis');
 const Guest = require("../models/Guest.model");
 const Song = require("../models/Song.model");
+const Event = require("../models/Event.model");
+
 const youtube = google.youtube({
     version: 'v3',
     auth: process.env.YOUTUBE_API_KEY
 });
-
-router.get("/", (req,res) =>{
-    res.render("karaoke/show", {user: req.session.user});
-})
-
-router.get("/search", (req,res) =>{
-    res.render("karaoke/search", {user: req.session.user});
-})
-
-router.post("/search", (req, res) => {
-    youtube.search.list({
-        part: "snippet", 
-        type: "video",
-        maxResults: 50,
-        q: req.body.busqueda + " karaoke"
-    })
-    .then(resultado =>{
-        res.render("karaoke/search", {items: resultado.data.items, user: req.session.user})
-    })
-    .catch(err => console.log(err))
-    
-})
 
 router.post("/list", (req,res) =>{
     youtube.videos.list({
@@ -66,11 +46,35 @@ router.post("/list", (req,res) =>{
     .catch(err => console.log(err))
 })
 
+router.get("/search", (req,res) =>{
+    res.render("karaoke/search", {user: req.session.user});
+})
 
+router.post("/search", (req, res) => {
+    youtube.search.list({
+        part: "snippet", 
+        type: "video",
+        videoEmbeddable: true,
+        maxResults: 50,
+        q: req.body.busqueda + " karaoke"
+    })
+    .then(resultado =>{
+        res.render("karaoke/search", {items: resultado.data.items, user: req.session.user})
+    })
+    .catch(err => console.log(err))
+    
+})
 
+router.get("/:id", (req,res) => {
+    Event.findById(req.params.id).then((event) => {
+        res.render("karaoke/show", {user: req.session.user, event});
+    })
+})
 
-
-
-
+router.get("/:id/songs", (req, res) => {
+    Song.find({ event: req.params.id }).sort('position').then((songs) => {
+        res.json(songs)
+    })
+})
 
 module.exports = router;
