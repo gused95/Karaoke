@@ -13,7 +13,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 const Event = require("../models/Event.model")
 
 //localhost:3000/user-profile
-router.get("/user-profile", (req, res) => { 
+router.get("/user-profile",isLoggedIn, (req, res) => { 
     Event.find({ user: req.session.user._id })
     .then(events => {
         res.render("users/user-profile",{
@@ -26,12 +26,12 @@ router.get("/user-profile", (req, res) => {
 });
 
 //localhost:3000/user/new-event
-router.get("/new-event", (req, res) => {
-    res.render("users/user-new-event", {user: req.session.user});
-});
+//router.get("/new-event", (req, res) => {
+    //res.render("users/user-new-event", {user: req.session.user});
+//});
 
 //localhost:3000/user/events/:id
-router.get("/events/:id", (req, res) => {
+router.get("/events/:id", isLoggedIn,(req, res) => {
     Event
         .findById(req.params.id)
         .populate('user')
@@ -51,14 +51,14 @@ router.get("/events/:id", (req, res) => {
         .catch(err => console.log(err))    
 });
 
-//localhost:3000/user/edit-event
-router.get("/edit-event/:id", (req, res) => {
-    Event.findById(req.params.id)
-        .then((event) => {
-            res.render("users/edit-event", {event, user: req.session.user})
-        })
-        .catch(err => console.log(err))
-});
+//localhost:3000/user/edit-event borrar
+//router.get("/edit-event/:id", (req, res) => {
+    //Event.findById(req.params.id)
+        //.then((event) => {
+            //res.render("users/edit-event", {event, user: req.session.user})
+        //})
+        //.catch(err => console.log(err))
+//});
 
 
 router.post("/edit-event/:id", (req, res) => {

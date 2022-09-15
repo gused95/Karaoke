@@ -1,27 +1,7 @@
 <body class="">
   <div class="container-profile-hbs">
     <div class="fondo3 container-user-profile" id="form-evento">
-      <!--<form action="/user/new-event" method="post">
-        <div class="inicio">
-          <h1>Datos del evento.</h1>
-          <label for="">
-            Nombre del evento:
-            <input type="text" name="eventName" id="" class="control" />
-          </label>
-
-          <label for="">
-            Fecha del evento:
-            <input
-              type="datetime-local"
-              name="eventDate"
-              id=""
-              class="control"
-            />
-          </label>
-
-          <button type="submit">Crear Evento</button>
-        </div>
-      </form>-->
+      <!--Aqui va la data(crear evento. editar evento)-->
     </div>
     <div class="container mt-5">
       <h2>Perfil de eventos</h2>
@@ -46,10 +26,10 @@
                     href="/user/edit-event/{{_id}}"
                     class="btn btn-dark"
                   >Editar</a>-->
-                  <a
-                    onclick=editarEvento()
+                  <button
+                    onclick="editarEvento('{{formatEvt this.eventName}}','{{parseFechita this.eventDate}}','{{_id}}')"
                     class="btn btn-dark"
-                  >Editar</a>
+                  >Editar</button>
                   <form action="/user/delete/{{_id}}" method="post">
                     <button
                       type="submit"

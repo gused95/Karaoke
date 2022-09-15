@@ -23,21 +23,22 @@ const crearEvento=()=>{
     `
 
     aux.innerHTML = inner
-    //aux.innerHTML(inner)
 }
 
-const editarEvento=()=>{
+const editarEvento=(name,fecha,id)=>{
+  const fechaAux=new Date(fecha)
+  console.log(fecha)
     const aux=document.querySelector('#form-evento')
     const inner=`<body class="">
     <div class="fondo3">
-        <form action="/user/new-event" method="post">
+        <form action="/user/edit-event/${id}" method="post">
             <div class="inicio">
                 <h1>Datos del evento.</h1>
                 <label for=""> Nombre del evento:
-                    <input type="text" name="eventName" id="" class='control' value="{{event.eventName}}">
+                    <input type="text" name="eventName" id="" class='control' value="${name}">
                 </label>
                 <label for=""> Fecha del evento:
-                    <input type="datetime-local" name="eventDate" id="" class='control' value="{{event.eventDate}}">
+                    <input type="datetime-local" name="eventDate" id="" class='control' value=${fecha}>
                 </label>
                 <button type="submit">Actualizar evento</button>
             </div>
