@@ -36,11 +36,16 @@
                         </div>
                     </div>
                     {{#each songs}}
-                    <div class="list-group-item">
-                            {{title}}
-                            <br>
-                            <small>{{guest.name}}</small>
-                        </div> 
+                        <div class="list-group-item d-flex">
+                            <div class="flex-grow-1">
+                                {{title}}
+                                <br>
+                                <small>{{guest.name}}</small>
+                            </div>
+                            <form action="/karaoke/delete-song/{{_id}}" method="post">
+                                <button class="btn"><i class="fa-regular fa-trash-can"></i></button>
+                             </form>
+                        </div>
                     {{/each}}
                 </div>
             </div>

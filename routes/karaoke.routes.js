@@ -77,4 +77,15 @@ router.get("/:id/songs", (req, res) => {
     })
 })
 
+
+
+router.post("/delete-song/:id", (req,res) =>{
+    console.log(req.params.id);
+    Song.findByIdAndRemove(req.params.id)
+    .then((song) => 
+        res.redirect(`/user/events/${song.event}`)
+    )
+    .catch(err =>{console.log(err)}) 
+})
+
 module.exports = router;
