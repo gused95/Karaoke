@@ -184,7 +184,7 @@ h1{
 }
 /*INICIA ESTILOS DE INICIO CORREO Y CONTRASEÑA */
 
-.inicio{
+.inicio {
   display: flex;
   flex-direction: column;
   width: 400px;
