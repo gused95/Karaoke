@@ -11,15 +11,29 @@ router.get("/sesion-invitado", isLoggedOut, (req, res)=>{
 })
 
 router.post("/", (req, res) => {
-    Event.findOne({ code: req.body.code })
+    const { name, code } = req.body;
+
+    if (!name || !code ) {
+        return res.status(400).render("invitados/sesion-invitado", {
+        errorMessage: "Por favor verifique los datos.",
+        });
+    }
+    Event.findOne({ code: code })
         .then((event) => {
-            return Guest.create({
-                event: event,
-                name: req.body.name
-            })
+            if(event) {
+                return Guest.create({
+                    event: event,
+                    name: req.body.name
+                })
+            }
+            return res.render("invitados/sesion-invitado", {
+                errorMessage: "Por favor verifique su código.",
+                });
+            
         })
         .then((guest) => {
             req.session.guestId = guest._id
+            console.log(req.session)
             res.redirect(`/user/events/${guest.event._id}`)
         }).
         catch((err) => console.error(err))
