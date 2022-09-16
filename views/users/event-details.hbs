@@ -5,14 +5,16 @@
         <h6>Código de evento: <strong>{{event.code}}</strong></h6>
         <div class="row">
             <div class="col-sm-6">
-               {{#with event}}
-                    <form class="mt-4" action="/user/send-invitation?eventName={{eventName}}&eventDate={{eventDate}}&eventId={{_id}}&eventCode={{code}}" method="post">
-                        <label>Invitar a:
-                            <input class="rounded-1 border border-1" type="mail" placeholder="Correo del invitado" name="mail">
-                        </label>
-                        <button class="purple-btn">Enviar</button>
-                    </form>
-                {{/with}}
+                {{#if user}}
+                    {{#with event}}
+                        <form class="mt-4" action="/user/send-invitation?eventName={{eventName}}&eventDate={{eventDate}}&eventId={{_id}}&eventCode={{code}}" method="post">
+                            <label>Invitar a:
+                                <input class="rounded-1 border border-1" type="mail" placeholder="Correo del invitado" name="mail">
+                            </label>
+                            <button class="purple-btn">Enviar</button>
+                        </form>
+                    {{/with}}
+                {{/if}}
                 <form class="mt-4" action="/user/event-details" method="post">
                     <label>Agregar Comentario:
                         <textarea class="rounded-1 border border-1 d-block"  rows="5" cols="36" placeholder="Comentario del evento" name="comment"></textarea>
