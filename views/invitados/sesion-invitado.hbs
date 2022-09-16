@@ -13,9 +13,11 @@
          <label> 
             Codigo
             <input name="code" class='control' id='codigo' type="text" placeholder="Ingrese su Codigo">
-         </label>          
+         </label>   
+         {{#if errorMessage}}
+            <p style="background-color: red; text-align: center">{{errorMessage}}</p>
+         {{/if}}       
          <button type="submit">Inicia</button>
-         <p>{{errorMessage}}</p>
       </div>
    </form>
 </div>         

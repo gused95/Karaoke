@@ -1,7 +1,8 @@
 <div class="py-5">   
     <div class="container">
         <h2 class="">{{event.eventName}}</h2>
-        <p>Por: {{event.user.nombre}}</p>
+        <h4>Por: {{event.user.nombre}}</h4>
+        <h6>Código de evento: <strong>{{event.code}}</strong></h6>
         <div class="row">
             <div class="col-sm-6">
                {{#with event}}

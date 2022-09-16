@@ -229,15 +229,6 @@ h1{
 }
 
 /* //ESTILOS DEL ERROR FORMULARIO/ */
-.error{
-  display: flex;  
-  box-sizing: border-box;
-  font-size: 28px;
-  color: white;
-  margin: 20px auto;
-  padding: 20px;
-  width: 100%;
-}
 
 .fondo3{
   display: flex;

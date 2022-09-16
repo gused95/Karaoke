@@ -15,6 +15,9 @@
             <label> Contraseña
                <input name="password" class='control' id='contraseña' type="password" placeholder="Ingrese su contraseña">
             </label>
+            {{#if errorMessage}}
+               <p style="background-color: red; text-align: center">{{errorMessage}}</p>
+            {{/if}}
             <button type="submit" value="Registar">Iniciar</button>
             <p class="cuenta">¿No tienes cuenta? <a class="link" href="http://localhost:3000/auth/signup">Registrate</a></p>
          </div> 
@@ -23,7 +26,5 @@
    <script src="/js/validacionLogin.js"></script>  
 </div>
 
-{{#if errorMessage}}
-   {{errorMessage}}
-{{/if}}
+
       
