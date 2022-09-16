@@ -18,24 +18,41 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <nav>
-      <div class="logo"><a href="/">K<span>a</span>n<span>t</span>a</a></div>         
-      <input type="checkbox" id="click">
-      <label for="click" class="menu-boton">
-        <i class="fas fa-bars"></i>
-      </label>
-      <ul>
-        {{#unless user}}
-          <li><a href="/auth/signup">Registrate</a></li>
-          <li><a href="/auth/login">Inicia Sesion</a></li>
-          <li><a href="/invitados/sesion-invitado">Invitado</a></li>
-        {{/unless}}
-        {{#if user}}
-          <li><a class="active" href="/">Bienvenido {{user.nombre}} {{user.apellido}} </a></li>
-          <li><a href="/auth/logout">Cierra Sesion</a></li>
-        {{/if}} 
-      </ul>
-    </nav>      
+    <nav class="navbar navbar-dark fixed-top navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="logo">
+          <a href="/">
+            K<span>a</span>n<span>t</span>a
+          </a>
+        </div> 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse flex-grow-0" id="navbar-nav">
+          <ul class="navbar-nav">
+            {{#unless user}}
+              <li class="nav-item">
+                <a href="/auth/signup" class="nav-link">Registrate</a>
+              </li>
+              <li class="nav-item">
+                <a href="/auth/login" class="nav-link">Inicia Sesion</a>
+              </li>
+              <li class="nav-item">
+                <a href="/invitados/sesion-invitado" class="nav-link">Invitado</a>
+              </li>
+            {{/unless}}
+            {{#if user}}
+              <li class="nav-item">
+                <a class="nav-link" href="/">Bienvenido {{user.nombre}} {{user.apellido}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/auth/logout">Cierra Sesion</a>
+              </li>
+            {{/if}}
+          </ul>
+        </div> 
+      </div>
+    </nav>    
 
     {{{body}}}
 
