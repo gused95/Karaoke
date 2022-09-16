@@ -90,9 +90,7 @@ router.post("/event-details", (req,res) =>{
 })
 
  router.post("/send-invitation", (req,res) =>{
-    console.log(req.session)
-    console.log(req.body)
-    console.log(req.query)
+    
     const {eventName, eventDate, eventId, eventCode} = req.query
     const {mail} = req.body
     const{nombre} = req.session.user
@@ -120,8 +118,6 @@ router.post("/event-details", (req,res) =>{
         data: JSON.stringify(data),
       })
         .then((result) => {
-          console.log(result);
-          console.log("Correo enviado :)");
           res.redirect(`/user/events/${eventId}`)
         })
         .catch((err) => {
@@ -139,7 +135,6 @@ router.post("/new-event", (req, res) => {
     
     //Create a new event
     Event.create(atributos).then(newEvent => {
-        console.log(newEvent);
         res.redirect("/user/user-profile")
     })
 });

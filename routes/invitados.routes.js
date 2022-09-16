@@ -33,7 +33,6 @@ router.post("/", (req, res) => {
         })
         .then((guest) => {
             req.session.guestId = guest._id
-            console.log(req.session)
             res.redirect(`/user/events/${guest.event._id}`)
         }).
         catch((err) => console.error(err))
